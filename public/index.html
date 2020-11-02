@@ -131,9 +131,6 @@
                }
     ],
     labels: [
-        'eat out',
-        'rent',
-        'groceries'
     ]
     };
 
@@ -149,9 +146,10 @@
         axios.get('/budget')
         .then(function (res){
             console.log(res.data);
-            for(var i=0; i < res.data.myBudget.length; i++){
-                dataSource.datasets[0].data[i] =res.data.myBudget[i].budget;
-                dataSource.labels[i] = res.data.myBudget[i].title;
+            for(var i=0; i < res.data.length; i++){
+                dataSource.datasets[0].backgroundColor[i] ="#"+ res.data[i].backgroundColor;
+                dataSource.datasets[0].data[i] = res.data[i].budget;
+                dataSource.labels[i] = res.data[i].title;
             }
             createChart();
         });
